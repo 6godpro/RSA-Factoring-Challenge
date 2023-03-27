@@ -1,0 +1,19 @@
+#!/usr/bin/python3
+from sys import argv
+
+
+def is_prime(n):
+    """Verifies if a number is a prime number."""
+    for div in range(2, n//2 + 1):
+       if n % div == 0:
+           return 0
+    return 1
+
+
+with open(argv[1], "r") as file:
+    for num in file:
+        num = int(num)
+        for div in range(2, num//2 + 1):
+            if num % div == 0 and is_prime(num//div) and is_prime(div):
+                print("{}={}*{}".format(num, num//div, div))
+                break
